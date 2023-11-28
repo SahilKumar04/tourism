@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect, useState } from 'react';
 import { Menubar } from 'primereact/menubar';
 import { useRouter } from 'next/navigation';
@@ -5,15 +6,14 @@ export default function Navbar() {
     const [items, setItems] = useState<{
         label: string;
         icon: string;
-        command: (event: any) => void;
     }[]>([]);
     const router = useRouter();
     const handleMenuItemClick = (event:any) => {
-        if (event.item.label === "Home") {
+        if (event.item.label === "Booking & Inquiry") {
             router.push("/home")
-        }else if (event.item.label === "About") {
+        }else if (event.item.label === "About Himalayas") {
             router.push("/home#about")
-        } else if (event.item.label === "Contact") {
+        } else if (event.item.label === "Contact Us") {
             router.push("/home#contact")
 
         }
@@ -38,19 +38,138 @@ export default function Navbar() {
         const items = 
         [
             {
-                label: 'Home',
+                label: 'Explore',
                 icon: 'pi pi-fw pi-file',
-                command: handleMenuItemClick
+                items:[
+                    {
+                       label:'About Himalayas',
+                       icon:'pi pi-fw pi-calendar-minus',
+                        command: handleMenuItemClick
+
+                    },
+                    {
+                       label:'Culture & Traditions',
+                       icon:'pi pi-fw pi-calendar-minus',
+                       command: handleMenuItemClick
+                    },
+                    {
+                       label:'Natural Wonders',
+                       icon:'pi pi-fw pi-calendar-minus',
+                       command: handleMenuItemClick
+                    },
+                    {
+                       label:'Hidden Gems',
+                       icon:'pi pi-fw pi-calendar-minus',
+                       command: handleMenuItemClick
+                    }
+                 ],
             },
             {
-                label: 'About',
+                label: 'Journeys',
                 icon: 'pi pi-fw pi-calendar',
+                items:[
+                    {
+                       label:'Destinations Overview',
+                       icon:'pi pi-fw pi-calendar-minus',
+                       command: handleMenuItemClick
+                    },
+                    {
+                       label:'Trekking Routes',
+                       icon:'pi pi-fw pi-calendar-minus',
+                       command: handleMenuItemClick
+                    },
+                    {
+                       label:'Scenic Tours',
+                       icon:'pi pi-fw pi-calendar-minus',
+                       command: handleMenuItemClick
+                    },
+                    {
+                       label:'Pilgrimage Trails',
+                       icon:'pi pi-fw pi-calendar-minus',
+                       command: handleMenuItemClick
+                    }
+                 ],
                 command: handleMenuItemClick
             },
             {
-                label: 'Contact',
+                label: 'Adventures',
                 icon: 'pi pi-fw pi-shopping-bag',
+                items:[
+                    {
+                       label:'Trekking & Hiking',
+                       icon:'pi pi-fw pi-calendar-minus',
+                        command: handleMenuItemClick
+                    },
+                    {
+                       label:'Mountaineering',
+                       icon:'pi pi-fw pi-calendar-minus',
+                        command: handleMenuItemClick
+                    },
+                    {
+                       label:'Rafting & Kayaking',
+                       icon:'pi pi-fw pi-calendar-minus',
+                        command: handleMenuItemClick
+                    },
+                    {
+                       label:'Wildlife Safaris',
+                       icon:'pi pi-fw pi-calendar-minus',
+                        command: handleMenuItemClick
+                    }
+                 ],
                 command: handleMenuItemClick
+            },
+            {
+                label: 'Inspiration',
+                icon: 'pi pi-fw pi-file',
+                items:[
+                    {
+                       label:'Photo Gallery',
+                       icon:'pi pi-fw pi-calendar-minus',
+                        command: handleMenuItemClick
+                    },
+                    {
+                       label:'Mountaineering',
+                       icon:'pi pi-fw pi-calendar-minus',
+                        command: handleMenuItemClick
+                    },
+                    {
+                       label:'Travel Stories',
+                       icon:'pi pi-fw pi-calendar-minus',
+                        command: handleMenuItemClick
+                    },
+                    {
+                       label:'Traveler Testimonials',
+                       icon:'pi pi-fw pi-calendar-minus',
+                        command: handleMenuItemClick
+                    }
+                 ],
+                command: handleMenuItemClick
+            },
+            {
+                label: 'Connect',
+                icon: 'pi pi-fw pi-calendar',
+                items:[
+                    {
+                       label:'Trip Planner',
+                       icon:'pi pi-fw pi-calendar-minus',
+                        command: handleMenuItemClick
+                    },
+                    {
+                       label:'Booking & Inquiry',
+                       icon:'pi pi-fw pi-calendar-minus',
+                        command: handleMenuItemClick
+                    },
+                    {
+                       label:'Contact Us',
+                       icon:'pi pi-fw pi-calendar-minus',
+                        command: handleMenuItemClick
+                    },
+                    {
+                       label:'Community Forum',
+                       icon:'pi pi-fw pi-calendar-minus',
+                        command: handleMenuItemClick
+                    }
+                 ]
             }
         ]
         setItems(items)
