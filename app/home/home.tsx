@@ -431,7 +431,6 @@ const Home = () => {
                     </div>
                 </div> */}
                 <AboutUs />
-                <ContactUs />
             </div>
 
         </>

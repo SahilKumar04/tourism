@@ -14,8 +14,9 @@ export default function Navbar() {
         }else if (event.item.label === "About Himalayas") {
             router.push("/home#about")
         } else if (event.item.label === "Contact Us") {
-            router.push("/home#contact")
-
+            router.push("/contactus")
+        } else if (event.item.label === "Trip Planner") {
+            router.push("/planyourtrip")
         }
     };
 
@@ -164,11 +165,11 @@ export default function Navbar() {
                        icon:'pi pi-fw pi-calendar-minus',
                         command: handleMenuItemClick
                     },
-                    {
-                       label:'Community Forum',
-                       icon:'pi pi-fw pi-calendar-minus',
-                        command: handleMenuItemClick
-                    }
+                    // {
+                    //    label:'Community Forum',
+                    //    icon:'pi pi-fw pi-calendar-minus',
+                    //     command: handleMenuItemClick
+                    // }
                  ]
             }
         ]
