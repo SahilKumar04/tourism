@@ -249,7 +249,7 @@ const Home = () => {
                     <div>
                         <h1 className="p-8 text-2xl font-bold text-center">TOUR & PACKAGES</h1>
                     </div>
-                    <div className='px-28  flex gap-8'>
+                    <div className='px-28 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
 
                         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <div className="h-min overflow-hidden rounded-md">
@@ -363,7 +363,7 @@ const Home = () => {
                 <div>
                     <h1 className="p-8 text-2xl font-bold text-custom-red text-center">Discover Unbeatable Winter Getaways</h1>
 
-                    <div className='px-28 flex gap-8'>
+                    <div className='px-28 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
 
                         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <div className="h-min overflow-hidden rounded-md">
