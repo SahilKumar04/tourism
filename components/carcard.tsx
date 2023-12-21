@@ -62,7 +62,7 @@ const CarCard = ({tour} : Props) => {
 
     return (
 
-        <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-white dark:border-white-700" >
+        <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-white dark:border-white-700 mb-4" >
             <a href="#">
                 <img className="max-w-[80%] rounded-t-lg m-[auto]" src={tour.carImageUrl} alt="product image" />
             </a>

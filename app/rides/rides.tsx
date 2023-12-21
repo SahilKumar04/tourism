@@ -17,15 +17,14 @@ import React from 'react'
 const rides = () => {
     return (
         <>
-        <div style={{ backgroundImage: 'url("sky.jpeg")'}}>
-            <Navbar/>
-            <SearchRide />
-            <div className='flex gap-[1rem] flex-wrap justify-around m-[2rem]'>
-            {tourData.map((tour, index) => (
-                <CarCard key={index} tour={tour}/>
-            ))}
+            <div style={{ backgroundImage: 'url("sky.jpeg")' }}>
+                <SearchRide />
+                <div className='flex gap-[1rem] flex-wrap justify-around m-[2rem]'>
+                    {tourData.map((tour, index) => (
+                        <CarCard key={index} tour={tour} />
+                    ))}
+                </div>
             </div>
-        </div>
         </>
     )
 }

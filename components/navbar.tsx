@@ -17,6 +17,14 @@ export default function Navbar() {
             router.push("/contactus")
         } else if (event.item.label === "Trip Planner") {
             router.push("/planyourtrip")
+        } else if (event.item.label === "Tour & Packages") {
+            router.push("/home#tours")
+        } else if (event.item.label === "Romantic Getaway") {
+            router.push("/home#Getaway")
+        } else if (event.item.label === "Culture & Traditions") {
+            router.push("/home#Getaway")
+        } else if (event.item.label === "Natural Wonders") {
+            router.push("/home#Getaway")
         }
     };
 
@@ -59,102 +67,97 @@ export default function Navbar() {
                        command: handleMenuItemClick
                     },
                     {
-                       label:'Hidden Gems',
+                       label:'Romantic Getaway',
                        icon:'pi pi-fw pi-calendar-minus',
                        command: handleMenuItemClick
                     }
                  ],
             },
-            {
-                label: 'Journeys',
-                icon: 'pi pi-fw pi-calendar',
-                items:[
-                    {
-                       label:'Destinations Overview',
-                       icon:'pi pi-fw pi-calendar-minus',
-                       command: handleMenuItemClick
-                    },
-                    {
-                       label:'Trekking Routes',
-                       icon:'pi pi-fw pi-calendar-minus',
-                       command: handleMenuItemClick
-                    },
-                    {
-                       label:'Scenic Tours',
-                       icon:'pi pi-fw pi-calendar-minus',
-                       command: handleMenuItemClick
-                    },
-                    {
-                       label:'Pilgrimage Trails',
-                       icon:'pi pi-fw pi-calendar-minus',
-                       command: handleMenuItemClick
-                    }
-                 ],
-                command: handleMenuItemClick
-            },
-            {
-                label: 'Adventures',
-                icon: 'pi pi-fw pi-shopping-bag',
-                items:[
-                    {
-                       label:'Trekking & Hiking',
-                       icon:'pi pi-fw pi-calendar-minus',
-                        command: handleMenuItemClick
-                    },
-                    {
-                       label:'Mountaineering',
-                       icon:'pi pi-fw pi-calendar-minus',
-                        command: handleMenuItemClick
-                    },
-                    {
-                       label:'Rafting & Kayaking',
-                       icon:'pi pi-fw pi-calendar-minus',
-                        command: handleMenuItemClick
-                    },
-                    {
-                       label:'Wildlife Safaris',
-                       icon:'pi pi-fw pi-calendar-minus',
-                        command: handleMenuItemClick
-                    }
-                 ],
-                command: handleMenuItemClick
-            },
-            {
-                label: 'Inspiration',
-                icon: 'pi pi-fw pi-file',
-                items:[
-                    {
-                       label:'Photo Gallery',
-                       icon:'pi pi-fw pi-calendar-minus',
-                        command: handleMenuItemClick
-                    },
-                    {
-                       label:'Mountaineering',
-                       icon:'pi pi-fw pi-calendar-minus',
-                        command: handleMenuItemClick
-                    },
-                    {
-                       label:'Travel Stories',
-                       icon:'pi pi-fw pi-calendar-minus',
-                        command: handleMenuItemClick
-                    },
-                    {
-                       label:'Traveler Testimonials',
-                       icon:'pi pi-fw pi-calendar-minus',
-                        command: handleMenuItemClick
-                    }
-                 ],
-                command: handleMenuItemClick
-            },
+            // {
+            //     label: 'Journeys',
+            //     icon: 'pi pi-fw pi-calendar',
+            //     items:[
+            //         {
+            //            label:'Destinations Overview',
+            //            icon:'pi pi-fw pi-calendar-minus',
+            //            command: handleMenuItemClick
+            //         },
+            //         {
+            //            label:'Trekking Routes',
+            //            icon:'pi pi-fw pi-calendar-minus',
+            //            command: handleMenuItemClick
+            //         },
+            //         {
+            //            label:'Scenic Tours',
+            //            icon:'pi pi-fw pi-calendar-minus',
+            //            command: handleMenuItemClick
+            //         },
+            //         {
+            //            label:'Pilgrimage Trails',
+            //            icon:'pi pi-fw pi-calendar-minus',
+            //            command: handleMenuItemClick
+            //         }
+            //      ],
+            //     command: handleMenuItemClick
+            // },
+            // {
+            //     label: 'Adventures',
+            //     icon: 'pi pi-fw pi-shopping-bag',
+            //     items:[
+            //         {
+            //            label:'Trekking & Hiking',
+            //            icon:'pi pi-fw pi-calendar-minus',
+            //             command: handleMenuItemClick
+            //         },
+            //         {
+            //            label:'Mountaineering',
+            //            icon:'pi pi-fw pi-calendar-minus',
+            //             command: handleMenuItemClick
+            //         },
+            //         {
+            //            label:'Rafting & Kayaking',
+            //            icon:'pi pi-fw pi-calendar-minus',
+            //             command: handleMenuItemClick
+            //         },
+            //         {
+            //            label:'Wildlife Safaris',
+            //            icon:'pi pi-fw pi-calendar-minus',
+            //             command: handleMenuItemClick
+            //         }
+            //      ],
+            //     command: handleMenuItemClick
+            // },
+            // {
+            //     label: 'Inspiration',
+            //     icon: 'pi pi-fw pi-file',
+            //     items:[
+            //         {
+            //            label:'Photo Gallery',
+            //            icon:'pi pi-fw pi-calendar-minus',
+            //             command: handleMenuItemClick
+            //         },
+            //         {
+            //            label:'Mountaineering',
+            //            icon:'pi pi-fw pi-calendar-minus',
+            //             command: handleMenuItemClick
+            //         },
+            //         {
+            //            label:'Travel Stories',
+            //            icon:'pi pi-fw pi-calendar-minus',
+            //             command: handleMenuItemClick
+            //         },
+            //         {
+            //            label:'Traveler Testimonials',
+            //            icon:'pi pi-fw pi-calendar-minus',
+            //             command: handleMenuItemClick
+            //         }
+            //      ],
+            //     command: handleMenuItemClick
+            // },
             {
                 label: 'Connect',
                 icon: 'pi pi-fw pi-calendar',
                 items:[
-                    {
-                       label:'Trip Planner',
-                       icon:'pi pi-fw pi-calendar-minus',
-                        command: handleMenuItemClick
-                    },
                     {
                        label:'Booking & Inquiry',
                        icon:'pi pi-fw pi-calendar-minus',
@@ -169,9 +172,22 @@ export default function Navbar() {
                     //    label:'Community Forum',
                     //    icon:'pi pi-fw pi-calendar-minus',
                     //     command: handleMenuItemClick
-                    // }
+                    // }TOUR & PACKAGES
                  ]
-            }
+            },
+            {
+                label:'Tour & Packages',
+                icon:'pi pi-fw pi-calendar-minus',
+                command: handleMenuItemClick
+
+            },
+            {
+                label:'Trip Planner',
+                icon:'pi pi-fw pi-calendar-minus',
+                command: handleMenuItemClick
+
+            },
+
         ]
         setItems(items)
     }, [])
@@ -193,8 +209,8 @@ export default function Navbar() {
     // const [visible, setVisible] = useState(false);
     return (
         <>
-            <div className="card sticky top-0" style={{ zIndex: 99 }}>
-                <Menubar model={items} end={start} className='items-center' />
+            <div className="card sticky top-0 " style={{ zIndex: 99 }}>
+                <Menubar model={items} end={start} className='items-center ' />
             </div>
             {/* <div className="card flex justify-content-center">
                 <Sidebar visible={visible} onHide={() => setVisible(false)} style={{ width: '250px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' }}>

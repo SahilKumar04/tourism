@@ -25,7 +25,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="https://w7.pngwing.com/pngs/913/860/png-transparent-green-mountain-with-trees-illustration-flat-design-landscape-mountain-forest-mountain-cloud-computer-wallpaper-white-clouds-thumbnail.png" type="image/x-icon" sizes="any"/>
       </head>
-      <body className={inter.className}>
+      <body className="bg-blue-200">
       <Navbar />
         {children}
         <Analytics />

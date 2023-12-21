@@ -6,6 +6,7 @@ import AboutUs from '@/components/about';
 import ContactUs from '@/components/contactus';
 import SearchRide from '@/components/seachride';
 import axios from 'axios';
+import Packagebook from '@/components/packagebook';
 
 interface Photo {
     source: string;
@@ -82,13 +83,18 @@ const Home = () => {
     function handleToggleForm(): void {
         setIsSearchRide(!isSearchRide)
     }
+    const [isPopupOpen, setPopupOpen] = useState(false);
+    const [packageName, setPackageName] = useState('');
+
+    const openPopup = (packName: string) => {
+        setPackageName(packName)
+        setPopupOpen(true);
+    };
 
     return (
         <>
             <div>
-                {/* <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center z-100 mt-[30px] flex flex-wrap"> */}
-                {/* </div> */}
-                <div className='relative' style={{ backgroundImage: 'url("sky.jpeg")' }}>
+                <div className='relative'>
                     <Carousel value={photos} itemTemplate={itemTemplate} numVisible={1} numScroll={1} autoplayInterval={crousalTime} className='carousel-image' />
                     <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-10 text-center flex-wrap">
                         <h1 className="text-4xl font-bold mb-4 text-white">Discover the World</h1>
@@ -205,46 +211,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className='p-[7rem] flex flex-col gap-8 bg-gray-200'>
-                    <h1 className="px-8 text-2xl font-bold text-center uppercase">Explore the most unique and far-flung destinations.</h1>
-                    <a className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-[100%] hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                        <div className="h-min overflow-hidden rounded-md">
-                            <img className="hover:scale-125 transition-all duration-500 cursor-pointer" src="https://ihplb.b-cdn.net/wp-content/uploads/2014/04/Best-Places-to-Visit-in-Himachal-Pradesh-750x430.jpg" alt="" />
-                        </div>
-                        <div className="flex flex-col justify-between p-4 leading-normal">
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                        </div>
-                    </a>
-                    <a className="flex flex-row-reverse items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row-reverse md:max-w-[100%] hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                        <div className="h-min overflow-hidden rounded-md">
-                            <img className="hover:scale-125 transition-all duration-500 cursor-pointer" src="https://ihplb.b-cdn.net/wp-content/uploads/2014/04/Best-Places-to-Visit-in-Himachal-Pradesh-750x430.jpg" alt="" />
-                        </div>
-                        <div className="flex flex-col justify-between p-4 leading-normal">
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                        </div>
-                    </a>
-                    <a className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-[100%] hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                        <div className="h-min overflow-hidden rounded-md">
-                            <img className="hover:scale-125 transition-all duration-500 cursor-pointer" src="https://ihplb.b-cdn.net/wp-content/uploads/2014/04/Best-Places-to-Visit-in-Himachal-Pradesh-750x430.jpg" alt="" />
-                        </div>
-                        <div className="flex flex-col justify-between p-4 leading-normal">
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                        </div >
-                    </a>
-                </div>
+                <Packagebook isPopupOpen={isPopupOpen} setPopupOpen={setPopupOpen} isOpen={isPopupOpen} packageName={packageName} ></Packagebook>
                 <div id='tours'>
                     <div>
                         <h1 className="p-8 text-2xl font-bold text-center">TOUR & PACKAGES</h1>
@@ -253,11 +220,11 @@ const Home = () => {
 
                         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <div className="h-min overflow-hidden rounded-md">
-                                <img className="hover:scale-125 transition-all duration-500 cursor-pointer" src="https://ihplb.b-cdn.net/wp-content/uploads/2014/04/Best-Places-to-Visit-in-Himachal-Pradesh-750x430.jpg" alt="" />
+                                <img className="hover:scale-125 transition-all duration-500 cursor-pointer h-[19rem]" src="packages_pic/manali.jpg" alt="" />
                             </div>
-                            <div className="px-5 pb-5">
+                            <div className="px-5 pb-5" onClick={() => openPopup("Manali Tour Packages")}>
                                 <a href="#">
-                                    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
+                                    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Manali Tour Packages</h5>
                                 </a>
                                 <div className="flex items-center mt-2.5 mb-5">
                                     <div className="flex items-center space-x-1 rtl:space-x-reverse">
@@ -279,19 +246,24 @@ const Home = () => {
                                     </div>
                                     <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
                                 </div>
+                                <span className='dark:text-white'>Per pair</span>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-3xl font-bold text-gray-900 dark:text-white">₹5999</span>
+                                    <div className='flex gap-2'>
+                                        <span className="text-xl font-bold text-gray-900 dark:text-white">₹19999</span>
+                                        <span className='text-sm dark:text-white'>(3N/4D)</span>
+                                        <span className='text-xm line-through text-red-500'>₹ 21999</span>
+                                    </div>
                                     <a href="#" className="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-800">Book Now</a>
                                 </div>
                             </div>
                         </div>
                         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <div className="h-min overflow-hidden rounded-md">
-                                <img className="hover:scale-125 transition-all duration-500 cursor-pointer" src="https://ihplb.b-cdn.net/wp-content/uploads/2014/04/Best-Places-to-Visit-in-Himachal-Pradesh-750x430.jpg" alt="" />
+                                <img className="hover:scale-125 transition-all duration-500 cursor-pointer h-[19rem]" src="packages_pic/shimla.jpeg" alt="" />
                             </div>
-                            <div className="px-5 pb-5">
+                            <div className="px-5 pb-5" onClick={() => openPopup("Shimla Tour Packages")}>
                                 <a href="#">
-                                    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
+                                    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Shimla Tour Packages</h5>
                                 </a>
                                 <div className="flex items-center mt-2.5 mb-5">
                                     <div className="flex items-center space-x-1 rtl:space-x-reverse">
@@ -313,8 +285,13 @@ const Home = () => {
                                     </div>
                                     <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
                                 </div>
+                                <span className='dark:text-white'>Per pair</span>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-3xl font-bold text-gray-900 dark:text-white">₹5999</span>
+                                    <div className='flex gap-2'>
+                                        <span className="text-xl font-bold text-gray-900 dark:text-white">₹11999</span>
+                                        <span className='text-sm dark:text-white'>(3N/4D)</span>
+                                        <span className='text-xm line-through text-red-500'>₹ 12999</span>
+                                    </div>
                                     <a href="#" className="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-800">Book Now</a>
                                 </div>
                             </div>
@@ -322,11 +299,12 @@ const Home = () => {
                         </div>
                         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <div className="h-min overflow-hidden rounded-md">
-                                <img className="hover:scale-125 transition-all duration-500 cursor-pointer" src="https://ihplb.b-cdn.net/wp-content/uploads/2014/04/Best-Places-to-Visit-in-Himachal-Pradesh-750x430.jpg" alt="" />
+                                <img className="hover:scale-125 transition-all duration-500 cursor-pointer  h-[19rem]" src="packages_pic/dharamshala.jpeg" alt="" />
                             </div>
-                            <div className="px-5 pb-5">
+                            <div className="px-5 pb-5" onClick={() => openPopup("Dharamshala Tour Packages")}>
                                 <a href="#">
-                                    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
+                                    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Dharamshala Tour Packages</h5>
+                                    {/* <p className="text-sm font-semibold tracking-tight text-gray-900 dark:text-white">Delhi</p> */}
                                 </a>
                                 <div className="flex items-center mt-2.5 mb-5">
                                     <div className="flex items-center space-x-1 rtl:space-x-reverse">
@@ -348,33 +326,37 @@ const Home = () => {
                                     </div>
                                     <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
                                 </div>
+                                <span className='dark:text-white'>Per pair</span>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-3xl font-bold text-gray-900 dark:text-white">₹5999</span>
+                                    <div className='flex gap-2'>
+                                        <span className="text-xl font-bold text-gray-900 dark:text-white">₹27999</span>
+                                        <span className='text-sm dark:text-white'>(3N/4D)</span>
+                                        <span className='text-xm line-through text-red-500'>₹ 28999</span>
+                                    </div>
                                     <a href="#" className="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-800">Book Now</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className='flex justify-center pb-28 pt-4 cursor-pointer'>
-                        <a className="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-800">More</a>
+                    <div className='flex justify-center pt-4 cursor-pointer'>
+                        {/* <a className="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-800" >More</a> */}
                     </div>
                 </div>
-
-                <div>
+                <div id="Getaway">
                     <h1 className="p-8 text-2xl font-bold text-custom-red text-center">Discover Unbeatable Winter Getaways</h1>
 
-                    <div className='px-28 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+                    <div className='px-28 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8'>
 
                         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <div className="h-min overflow-hidden rounded-md">
-                                <img className="hover:scale-125 transition-all duration-500 cursor-pointer" src="https://assets-news.housing.com/news/wp-content/uploads/2022/07/28105830/Top-10-tourist-places-to-visit-in-Himachal-Pradesh-09.jpg" alt="" />
+                                <img className="hover:scale-125 transition-all duration-500 cursor-pointer h-[15rem]" src="https://www.ashtvinayaktravels.com/wp-content/uploads/2017/10/manali-honeymoon-package-bb.jpg" alt="" />
                             </div>
                             <div className="p-5">
                                 <a href="#">
-                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Romantic Adventure</h5>
                                 </a>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                                <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-800">
+                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Dive into a whirlwind of romance with this package designed for lovebirds. Experience a mix of dreamy getaways, intimate moments, and exciting explorations tailor-made for creating everlasting memories on your honeymoon.</p>
+                                <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-800" onClick={() => openPopup("Romantic Adventure")}>
                                     Book Now
                                     <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
@@ -384,14 +366,14 @@ const Home = () => {
                         </div>
                         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <div className="h-min overflow-hidden rounded-md">
-                                <img className="hover:scale-125 transition-all duration-500 cursor-pointer" src="https://travelsincredibleindia.files.wordpress.com/2018/02/himachal-pradesh-tourism.jpg?w=636&h=382" alt="" />
+                                <img className="hover:scale-125 transition-all duration-500 cursor-pointer h-[15rem]" src="https://www.jakhuropewayshimla.com/blog/wp-content/uploads/2018/08/temples-in-shimla.jpg" alt="" />
                             </div>
                             <div className="p-5">
                                 <a href="#">
-                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{`Holy Roamers' Adventure Quest`}</h5>
                                 </a>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                                <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-800">
+                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Embark on a spiritual journey filled with wonder and enlightenment. Discover the sacred sites, immerse yourself in rich traditions, and uncover the spiritual essence of India through a blend of devotion and adventure.</p>
+                                <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-800" onClick={() => openPopup("Holy Roamers' Adventure Quest")}>
                                     Book Now
                                     <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
@@ -401,15 +383,15 @@ const Home = () => {
                         </div>
                         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <div className="h-min overflow-hidden rounded-md">
-                                <img className="hover:scale-125 transition-all duration-500 cursor-pointer" src="https://www.swantour.com/blogs/wp-content/uploads/2019/01/Tourist-Places-in-Himachal-Pradesh.jpg" alt="" />
+                                <img className="hover:scale-125 transition-all duration-500 cursor-pointer h-[15rem]" src="https://flyextremeworld.com/ImageCart/2050_Best-Places-To-Visit-In-Shimla.jpg" alt="" />
                             </div>
                             <div className="p-5">
                                 <a href="#">
-                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Wild Wonders Extravaganza</h5>
                                 </a>
-                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                                <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-800">
-                                Book Now
+                                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Get ready for an adrenaline-packed adventure in natures lap! This package promises exhilarating escapades amidst breathtaking landscapes, wildlife encounters, and serene hideaways—a perfect fusion of thrill and tranquility amidst natures wonders.</p>
+                                <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-800" onClick={() => openPopup("Wild Wonders Extravaganza")}>
+                                    Book Now
                                     <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                                     </svg>
@@ -417,11 +399,10 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='flex justify-center pb-28 pt-4 cursor-pointer'>
+                    {/* <div className='flex justify-center pb-28 pt-4 cursor-pointer'>
                         <a className="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-800">More</a>
-                    </div>
+                    </div> */}
                 </div>
-
                 {/* <div className="card flex items-center justify-center p-6 bg-gradient-to-r from-a8fffa to-251e1e rounded-lg">
                     <div className="mr-6">
                         <Image src="/remove.png" alt="Image" width="800" height="450" />
